@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>SRFI 177</title>
-  <link rel="stylesheet" href="/srfi.css" type="text/css" />
+  <link rel="stylesheet" href="/srfi.css" type="text/css">
 </head>
 <body>
   <h1>SRFI 177</h1>
@@ -12,14 +12,16 @@
   <h2>Author</h2>
   <p>Lassi Kortela</p>
   <h2>Status</h2>
-  <p>This SRFI is currently in <em>draft</em> status.  Here is
-    <a href="https://srfi.schemers.org/srfi-process.html">an
-      explanation</a> of each status that a SRFI can hold.  To provide
-    input on this SRFI, please send email to <code><a href="mailto:srfi+minus+177+at+srfi+dotschemers+dot+org">srfi-177@<span class="antispam">nospam</span>srfi.schemers.org</a></code>.  To
-    subscribe to the list, follow
-    <a href="https://srfi.schemers.org/srfi-list-subscribe.html">these
-      instructions</a>.  You can access previous messages via the mailing
-    list <a href="https://srfi-email.schemers.org/srfi-177">archive</a>.</p>
+  <p>This SRFI is currently in <em>draft</em> status. Here is
+  <a href="https://srfi.schemers.org/srfi-process.html">an
+  explanation</a> of each status that a SRFI can hold. To provide
+  input on this SRFI, please send email to <code><a href=
+  "mailto:srfi+minus+177+at+srfi+dotschemers+dot+org">srfi-177@<span class="antispam">nospam</span>srfi.schemers.org</a></code>.
+  To subscribe to the list, follow <a href=
+  "https://srfi.schemers.org/srfi-list-subscribe.html">these
+  instructions</a>. You can access previous messages via the
+  mailing list <a href=
+  "https://srfi-email.schemers.org/srfi-177">archive</a>.</p>
   <ul>
     <li>Received: 2019/10/16</li>
     <li>60-day deadline: 2019/12/15</li>
@@ -225,8 +227,8 @@
   <code>#:key</code> into the lambda list. This turns out to be
   trivially easy in all of them. For a few implementations, we need
   to turn each keyword symbol <code>bar</code> into <code>(bar
-  #f)</code> to ensure that the default value is <code>#f</code> instead
-  of undefined. Finally, Racket requires an exotic syntax
+  #f)</code> to ensure that the default value is <code>#f</code>
+  instead of undefined. Finally, Racket requires an exotic syntax
   <code>#:bar (bar #f)</code> where the keyword’s name appears
   twice (once as a keyword and again as a symbol). This is easy to
   code as well.</p>
