@@ -13,7 +13,7 @@
   <h2>Status</h2>
   <p>Draft</p>
   <h2>Abstract</h2>
-  <p>Many Scheme implementations have keyword arguments but they
+  <p>Many Scheme implementations have keyword arguments, but they
   have not been widely standardized. This SRFI defines the macros
   <code>keyword-lambda</code> and <code>keyword-call</code>. They
   can be used identically in every major implementation currently
@@ -99,7 +99,7 @@
   <ul>
     <li>
       <p>Common Lisp (1994) has standard keyword arguments defined
-      with <code>(lambda (foo &amp;key bar) ...​)</code> and
+      with <code>(lambda (foo &amp;key bar) ...)</code> and
       supplied with <code>:bar</code> syntax. This has influenced
       some Scheme implementations.</p>
     </li>
@@ -116,7 +116,7 @@
     <li>
       <p>SRFI 89: <em>Optional positional and named parameters</em>
       (2007) specifies <code>define*</code> and
-      <code>lambda*</code> which can handle positional, optional,
+      <code>lambda*</code>, which can handle positional, optional,
       rest and keyword arguments. The result approaches the
       capabilities of Common Lisp function definitions, but also
       their complexity. Keywords use SRFI 88 syntax.</p>
@@ -211,8 +211,8 @@
   keywords, we need to insert the constant <code>#!key</code> or
   <code>#:key</code> into the lambda list. This turns out to be
   trivially easy in all of them. For a few implementations, we need
-  to turn each keyword symbol <code>bar</code> info <code>(bar
-  #f)</code> to ensure the default value if <code>#f</code> instead
+  to turn each keyword symbol <code>bar</code> into <code>(bar
+  #f)</code> to ensure that the default value is <code>#f</code> instead
   of undefined. Finally, Racket requires an exotic syntax
   <code>#:bar (bar #f)</code> where the keyword’s name appears
   twice (once as a keyword and again as a symbol). This is easy to
