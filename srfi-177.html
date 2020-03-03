@@ -333,6 +333,11 @@
   <em>p</em> <em>formals</em> ...​ (<em>keyword1</em>
   <em>value1</em> ...​)). There may be additional
   implementation-defined ways to call <em>p</em>.</p>
+  <p>Syntax (<strong>define/kw</strong> (<em>name</em>
+  <em>formals...​</em> (<em>keywords...​</em>))
+  <em>body...​</em>)</p>
+  <p>Like <strong>lambda/kw</strong>, but binds the keyword lambda
+  to <em>name</em> like <strong>define</strong> does.</p>
   <p>Syntax (<strong>call/kw</strong> <em>kw-lambda</em>
   <em>args</em>...​ (<em>kw-args</em>...​))</p>
   <p>This macro expands to a call to <em>kw-lambda</em> with zero
