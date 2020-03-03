@@ -290,8 +290,8 @@
   (lambda/kw (a b (c d e))
     (list a b c d e)))
 
-(foo 1 2)                             ; =&gt; (1 2 #f #f #f)
-(apply foo 1 2 '())                   ; =&gt; (1 2 #f #f #f)
+(foo 1 2)                        ; =&gt; (1 2 #f #f #f)
+(apply foo 1 2 '())              ; =&gt; (1 2 #f #f #f)
 (call/kw foo 1 2 ())             ; =&gt; (1 2 #f #f #f)
 (call/kw foo 1 2 (d 4))          ; =&gt; (1 2 #f 4 #f)
 (call/kw foo 1 2 (d 4 e 5))      ; =&gt; (1 2 #f 4 5)
