@@ -285,17 +285,18 @@
   (<em>keywords...​</em>)) <em>body...​</em>)</p>
   <p>Like <strong>lambda</strong>, but makes a procedure that can
   take keyword arguments in addition to positional arguments.</p>
-  <p><em>formals</em> are zero or more symbols naming positional
-  arguments. <em>keywords</em> are zero or more symbols naming
-  keyword arguments. All positional arguments need to be supplied
-  by the caller on every call. There is no way to define optional
-  positional arguments or a rest argument. By contrast, all keyword
-  arguments are optional. Every keyword argument takes on the
-  default value <code>#f</code> when no value is supplied by the
-  caller. There is no support for user-defined default values; this
-  simplifies the syntax of keyword lambdas and makes it easier to
-  write wrapper procedures for them since the wrapper can always
-  pass <code>#f</code> to any keyword argument it does not use.</p>
+  <p><em>formals</em> are zero or more identifiers naming
+  positional arguments. <em>keywords</em> are zero or more
+  identifiers naming keyword arguments. All positional arguments
+  need to be supplied by the caller on every call. There is no way
+  to define optional positional arguments or a rest argument. By
+  contrast, all keyword arguments are optional. Every keyword
+  argument takes on the default value <code>#f</code> when no value
+  is supplied by the caller. There is no support for user-defined
+  default values; this simplifies the syntax of keyword lambdas and
+  makes it easier to write wrapper procedures for them since the
+  wrapper can always pass <code>#f</code> to any keyword argument
+  it does not use.</p>
   <p><em>body</em> is evaluated as if in the context
   (<strong>lambda</strong> (...​) <em>body...​</em>) so anything
   that can go at the beginning of a lambda can go at the beginning
@@ -303,7 +304,7 @@
   wrapped inside another lambda depending on the implementation.
   Within <em>body</em>, all of the arguments in <em>formals</em>
   and <em>keywords</em> can be accessed as variables using the
-  symbols given by the user.</p>
+  identifiers given by the user.</p>
   <p>The returned procedure <em>p</em> can be called in any way
   that an ordinary procedure can, e.g. (<em>p</em>
   <em>formals...​</em>) or (<strong>apply</strong> <em>p</em>
@@ -332,8 +333,8 @@
   <p>Each keyword argument in <em>kw-args</em> is written as two
   forms: <em>keyword</em> <em>value</em>. Each <em>keyword</em> is
   written as a standard Scheme symbol and is implicitly quoted
-  (i.e. it has to be a symbol at read time; cannot be some other
-  expression that evaluates to a symbol). The symbols are
+  (i.e. it has to be an identifier at read time; it cannot be some
+  other expression that evaluates to a symbol). The symbols are
   internally converted to native keywords in implementations that
   have them.</p>
   <h2 id="_implementation">Implementation</h2>
