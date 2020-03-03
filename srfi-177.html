@@ -324,12 +324,11 @@
   different number of <em>args</em> than the number of positional
   arguments expected by <em>kw-lambda</em>.</p>
   <p>Keyword arguments may be passed in any combination, and in any
-  order. It is valid to supply no <em>kw-args</em> at all. It is an
-  error to have duplicate keywords in <em>kw-args</em>. As with
-  ordinary procedure calls in Scheme, nothing is guaranteed about
-  the evaluation order of <em>args</em> and <em>kw-args</em>. For a
-  guaranteed evaluation order, bind arguments with
-  <strong>let</strong>* before passing them in.</p>
+  order. It is an error to have duplicate keywords in
+  <em>kw-args</em>. As with ordinary procedure calls in Scheme,
+  nothing is guaranteed about the evaluation order of <em>args</em>
+  and <em>kw-args</em>. For a guaranteed evaluation order, bind
+  arguments with <strong>let</strong>* before passing them in.</p>
   <p>Each keyword argument in <em>kw-args</em> is written as two
   forms: <em>keyword</em> <em>value</em>. Each <em>keyword</em> is
   written as a standard Scheme symbol and is implicitly quoted
