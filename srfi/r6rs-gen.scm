@@ -14,7 +14,7 @@
             (display ";; Auto-generated\n" out)
             (display "#!r6rs\n" out)
             (pretty-print `(library (srfi :177)
-                             (export keyword-lambda keyword-call)
+                             (export lambda/kw call/kw)
                              (import (rnrs))
                              (define (error* x) (error #f x))
                              ,@forms)

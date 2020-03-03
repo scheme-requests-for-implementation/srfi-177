@@ -2,7 +2,7 @@
 ;; For the native, non-R7RS mode, (load "*.scm") instead.
 
 (define-library (srfi 177)
-  (export keyword-lambda keyword-call)
+  (export lambda/kw call/kw)
   (import (scheme base))
   (cond-expand
     (chicken

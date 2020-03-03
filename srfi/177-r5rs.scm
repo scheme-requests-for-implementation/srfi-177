@@ -18,7 +18,7 @@
          (set! keyword val)
          (kw-setters sym val keywords ...)))))
 
-(define-syntax keyword-lambda
+(define-syntax lambda/kw
   (syntax-rules (kv val vals loop i)
     ((_ (formals ... (keywords ...)) body ...)
      (lambda (formals ... . kv)
@@ -42,7 +42,7 @@
     ((_ kw-lambda (kvs ...) (args ...) (key val more-kvs ...))
      (kw-call-aux kw-lambda (kvs ... 'key val) (args ...) (more-kvs ...)))))
 
-(define-syntax keyword-call
+(define-syntax call/kw
   (syntax-rules ()
     ((_ kw-lambda args ... (kvs ...))
      (kw-call-aux kw-lambda () (args ...) (kvs ...)))))
