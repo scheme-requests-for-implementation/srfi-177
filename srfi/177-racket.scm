@@ -1,4 +1,4 @@
-(define-syntax keyword-lambda
+(define-syntax lambda/kw
   (lambda (stx)
     (syntax-case stx ()
       ((_ (formals ... (keyword-symbols ...)) body ...)
@@ -15,7 +15,7 @@
                                (append acc `(,key (,sym #f))))))))
            body ...)))))
 
-(define-syntax keyword-call
+(define-syntax call/kw
   (lambda (stx)
     (syntax-case stx ()
       ((_ kw-lambda positional-vals ... (keyword-syms-and-vals ...))
@@ -25,7 +25,7 @@
                         (acc '()))
                (cond ((null? alls) (datum->syntax stx (reverse acc)))
                      ((null? (cdr alls))
-                      (error "Missing keyword value in keyword-call"))
+                      (error "Missing keyword value in call/kw"))
                      (else (let ((key (string->keyword
                                        (symbol->string (car alls))))
                                  (val (cadr alls)))

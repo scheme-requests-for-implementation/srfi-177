@@ -1,7 +1,7 @@
 ;; Auto-generated
 #!r6rs
 (library (srfi :177)
-  (export keyword-lambda keyword-call)
+  (export lambda/kw call/kw)
   (import (rnrs))
   (define (error* x) (error #f x))
   (define-syntax let-false
@@ -21,7 +21,7 @@
        (if (eq? 'keyword sym)
            (set! keyword val)
            (kw-setters sym val keywords ...))]))
-  (define-syntax keyword-lambda
+  (define-syntax lambda/kw
     (syntax-rules (kv val vals loop i)
       [(_ (formals ... (keywords ...)) body ...)
        (lambda (formals ... . kv)
@@ -46,7 +46,7 @@
          (kvs ... 'key val)
          (args ...)
          (more-kvs ...))]))
-  (define-syntax keyword-call
+  (define-syntax call/kw
     (syntax-rules ()
       [(_ kw-lambda args ... (kvs ...))
        (kw-call-aux kw-lambda () (args ...) (kvs ...))])))

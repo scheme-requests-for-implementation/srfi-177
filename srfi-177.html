@@ -30,11 +30,11 @@
   <h2>Abstract</h2>
   <p>Many Scheme implementations have keyword arguments, but they
   have not been widely standardized. This SRFI defines the macros
-  <code>keyword-lambda</code> and <code>keyword-call</code>. They
-  can be used identically in every major implementation currently
-  in use, making it safe to use keyword arguments in portable code.
-  The macros expand to native keyword arguments in Schemes that
-  have them, letting programmers mix portable code and
+  <code>lambda/kw</code> and <code>call/kw</code>. They can be used
+  identically in every major implementation currently in use,
+  making it safe to use keyword arguments in portable code. The
+  macros expand to native keyword arguments in Schemes that have
+  them, letting programmers mix portable code and
   implementation-specific code.</p>
   <h2>Table of contents</h2>
   <ul>
@@ -217,7 +217,7 @@
   easiest portable approach is to provide a macro that lets the
   caller use ordinary symbols instead of keywords for the read
   syntax. The symbols are then converted into the implementation’s
-  native keyword syntax by the macro. The <code>keyword-call</code>
+  native keyword syntax by the macro. The <code>call/kw</code>
   procedure in this SRFI implements this pattern.</p>
   <h4 id="_procedure_definitions">Procedure definitions</h4>
   <p>The next problem is how to define procedures that take keyword
@@ -279,25 +279,25 @@
   patterns</em> from SRFI 46 (<em>Basic syntax-rules
   extensions</em>) we can check whether the last element of a list
   is another list. Consequently we can achieve the syntax
-  <code>(keyword-lambda (pos1 pos2 (key3 key4)) ...​)</code> and
-  <code>(keyword-call pos1 pos2 (key3 key4))</code>. This is
-  reasonably simple and unambiguous.</p>
+  <code>(lambda/kw (pos1 pos2 (key3 key4)) ...​)</code> and
+  <code>(call/kw pos1 pos2 (key3 key4))</code>. This is reasonably
+  simple and unambiguous.</p>
   <h2 id="_specification">Specification</h2>
   <h3 id="_summary">Summary</h3>
-  <p>This SRFI provides <strong>keyword-lambda</strong> and
-  <strong>keyword-call</strong> which are used as follows:</p>
+  <p>This SRFI provides <strong>lambda/kw</strong> and
+  <strong>call/kw</strong> which are used as follows:</p>
   <pre><code>(define foo
-  (keyword-lambda (a b (c d e))
+  (lambda/kw (a b (c d e))
     (list a b c d e)))
 
 (foo 1 2)                             ; =&gt; (1 2 #f #f #f)
 (apply foo 1 2 '())                   ; =&gt; (1 2 #f #f #f)
-(keyword-call foo 1 2 ())             ; =&gt; (1 2 #f #f #f)
-(keyword-call foo 1 2 (d 4))          ; =&gt; (1 2 #f 4 #f)
-(keyword-call foo 1 2 (d 4 e 5))      ; =&gt; (1 2 #f 4 5)
-(keyword-call foo 1 2 (e 5 c 3 d 4))  ; =&gt; (1 2 3 4 5)</code></pre>
+(call/kw foo 1 2 ())             ; =&gt; (1 2 #f #f #f)
+(call/kw foo 1 2 (d 4))          ; =&gt; (1 2 #f 4 #f)
+(call/kw foo 1 2 (d 4 e 5))      ; =&gt; (1 2 #f 4 5)
+(call/kw foo 1 2 (e 5 c 3 d 4))  ; =&gt; (1 2 3 4 5)</code></pre>
   <h3 id="_details">Details</h3>
-  <p>Syntax (<strong>keyword-lambda</strong> (<em>formals...​</em>
+  <p>Syntax (<strong>lambda/kw</strong> (<em>formals...​</em>
   (<em>keywords...​</em>)) <em>body...​</em>)</p>
   <p>Like <strong>lambda</strong>, but makes a procedure that can
   take keyword arguments in addition to positional arguments.</p>
@@ -329,11 +329,11 @@
   arguments take on the default value <code>#f</code>. Giving more
   arguments than that results in undefined behavior. To supply a
   value for one or more keyword arguments in a well-defined and
-  portable way, call <em>p</em> via (<strong>keyword-call</strong>
+  portable way, call <em>p</em> via (<strong>call/kw</strong>
   <em>p</em> <em>formals</em> ...​ (<em>keyword1</em>
   <em>value1</em> ...​)). There may be additional
   implementation-defined ways to call <em>p</em>.</p>
-  <p>Syntax (<strong>keyword-call</strong> <em>kw-lambda</em>
+  <p>Syntax (<strong>call/kw</strong> <em>kw-lambda</em>
   <em>args</em>...​ (<em>kw-args</em>...​))</p>
   <p>This macro expands to a call to <em>kw-lambda</em> with zero
   or more positional arguments <em>args</em> and zero or more
