@@ -64,6 +64,11 @@
             </li>
             <li>
               <a href=
+              "#_keywords_as_objects_vs_syntactic_markers">Keywords
+              as objects vs syntactic markers</a>
+            </li>
+            <li>
+              <a href=
               "#_emulating_keywords_in_schemes_that_don_t_have_them">
               Emulating keywords in Schemes that don’t have
               them</a>
@@ -229,6 +234,17 @@
   <code>#:bar (bar #f)</code> where the keyword’s name appears
   twice (once as a keyword and again as a symbol). This is easy to
   code as well.</p>
+  <h4 id="_keywords_as_objects_vs_syntactic_markers">Keywords as
+  objects vs syntactic markers</h4>
+  <p>Most Scheme implementations with keywords follow Common Lisp's
+  approach and treat them as symbol-like objects. Kawa and Racket
+  take another approach, and treat (unquoted) keywords as syntactic
+  markers signifying a keyword argument inside a procedure call. In
+  these dialects of Scheme, it is a syntax error to have an
+  unquoted keyword in source code apart from valid locations inside
+  a procedure call. If we write our macros to expand into an
+  ordinary procedure call in these Schemes, we can use keywords as
+  markers without a problem.</p>
   <h4 id="_emulating_keywords_in_schemes_that_don_t_have_them">
   Emulating keywords in Schemes that don’t have them</h4>
   <p>For Schemes that don’t have keyword arguments, the best
