@@ -4,6 +4,8 @@
 
 
 
+keywords: [[https://srfi.schemers.org/?keywords=binding][Binding]]
+
 This repository hosts [[https://srfi.schemers.org/srfi-177/][SRFI 177]]: Portable keyword arguments, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
 This SRFI is in /draft/ status.
