@@ -417,6 +417,33 @@
     <li>Larceny</li>
   </ul>
   <h2 id="_acknowledgements">Acknowledgements</h2>
+  <p>Special thanks to Marc Nieper-Wißkirchen for his tireless
+  championing of efficiency, hygiene and clarity on the SRFI's
+  mailing list. In all Lisp systems we are aware of, keywords are
+  global names: any two keywords with the same name are equal. Marc
+  had the novel idea of exploring hygienic keywords so that
+  keywords from different libraries would not clash, which would
+  make it easier to write reliable utility libraries that add their
+  own library-specific keyword arguments to procedures. Marc also
+  had the idea of making <code>define/kw</code> expand to a macro
+  instead of a procedure for efficiency reasons, and of using
+  <em>identifier syntax</em> (familiar from R<sup>6</sup>RS
+  <code>syntax-case</code> macros to overload the macro definition
+  so that using a bare identifier instead of procedure call syntax
+  can still return a lambda for passing around as an object.</p>
+  <p>Thanks to John Cowan for encouragement, and for working hard
+  to find a way to prepare SRFI 177 for inclusion in
+  R<sup>7</sup>RS Large Edition. This ultimately didn't work out,
+  but very useful discussions were had and future keyword SRFIs are
+  still in the cards.</p>
+  <p>Thanks to Shiro Kawai for writing an optimized <a href=
+  "https://gist.github.com/shirok/f824b798dc1326314e51c5fb2dfdc3d5">
+  sample implementation</a> for Gauche using
+  <code>er-macro-transformer</code>.</p>
+  <p>Thanks to Amirouche Boubekki for balancing the discussion with
+  skepticism of adding keyword arguments to Scheme at all.</p>
+  <p>Thanks to John and Shiro for surveys of the native keyword
+  syntax and semantics of different Scheme implementations.</p>
   <p>Thanks to many Scheme implementors and standardization people
   on the <em>srfi-discuss</em> mailing list for partaking in a big
   discussion about keyword unification in July 2019. Although the
@@ -427,9 +454,6 @@
   <p>Special thanks to Robert Strandh, author of the SICL Common
   Lisp implementation, for taking the time to explain compiler
   optimization of keyword argument passing to us Schemers.</p>
-  <p>Thanks to John Cowan and Shiro Kawai for surveys of the native
-  keyword syntax and semantics of different Scheme
-  implementations.</p>
   <p>Thanks to Göran Weinholt for collaborating on Docker
   containers that make it easy to work with exotic Scheme
   implementations.</p>
