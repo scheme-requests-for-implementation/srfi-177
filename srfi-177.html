@@ -54,6 +54,10 @@
           implementations with native keywords</a>
         </li>
         <li>
+          <a href="#_the_let_keywords_emulation_library">The
+          <code>let-keywords</code> emulation library</a>
+        </li>
+        <li>
           <a href="#_a_portable_approach">A portable approach</a>
           <ul>
             <li>
@@ -206,20 +210,34 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="_the_let_keywords_emulation_library">The
+  <code>let-keywords</code> emulation library</h3>
+  <p>Chibi-Scheme comes with a <code>let-keywords</code> macro in
+  the <code>(chibi optional)</code> library. Chibi does not have
+  special read syntax for keywords: quoted symbols are used to the
+  same effect. Chibi does not offer a keyword-aware version of
+  <strong>lambda</strong> or <strong>define</strong>. Instead, an
+  ordinary procedure is defined with a rest argument to stand in
+  for the keywords part. The rest argument is then destructured
+  using <code>let-keywords</code> within the procedure body,
+  effectively unpacking it like a traditional Lisp <a href=
+  "http://www.lispworks.com/documentation/HyperSpec/Body/26_glo_p.htm#property_list">
+  <em>property list</em></a> (plist).</p>
   <h3 id="_a_portable_approach">A portable approach</h3>
   <h4 id="_procedure_calls">Procedure calls</h4>
-  <p>From the above table it is clear that there is no portable
-  syntax to supply keyword arguments in a procedure call. While all
-  of the implementations support the syntax <code>(proc arg1 arg2
-  #:key3 arg3 #:key4 arg4)</code> with the keys in any order, the
-  keyword prefix or suffix <code>#:</code> varies. On the other
-  hand the implementations all have a low-level macro system, as
-  well as procedures to turn symbols into keywords. Hence the
-  easiest portable approach is to provide a macro that lets the
-  caller use ordinary symbols instead of keywords for the read
-  syntax. The symbols are then converted into the implementation’s
-  native keyword syntax by the macro. The <code>call/kw</code>
-  procedure in this SRFI implements this pattern.</p>
+  <p>From the above table of native keywords it is clear that there
+  is no portable syntax to supply keyword arguments in a procedure
+  call. While all of the implementations support the syntax
+  <code>(proc arg1 arg2 #:key3 arg3 #:key4 arg4)</code> with the
+  keys in any order, the keyword prefix or suffix <code>#:</code>
+  varies. On the other hand the implementations all have a
+  low-level macro system, as well as procedures to turn symbols
+  into keywords. Hence the easiest portable approach is to provide
+  a macro that lets the caller use ordinary symbols instead of
+  keywords for the read syntax. The symbols are then converted into
+  the implementation’s native keyword syntax by the macro. The
+  <code>call/kw</code> procedure in this SRFI implements this
+  pattern.</p>
   <h4 id="_procedure_definitions">Procedure definitions</h4>
   <p>The next problem is how to define procedures that take keyword
   arguments. Portable code cannot use any syntax that requires
@@ -249,23 +267,24 @@
   <h4 id="_emulating_keywords_in_schemes_that_don_t_have_them">
   Emulating keywords in Schemes that don’t have them</h4>
   <p>For Schemes that don’t have keyword arguments, the best
-  approach is to use a rest argument as in <code>(lambda (arg1 arg2
-  . kvs) ...​)</code>. This argument takes a property list of
-  keywords and their values. As above, the keywords can be
-  represented by standard Scheme symbols.</p>
+  approach is the one employed by Chibi's
+  <code>let-keywords</code>: use a rest argument as in
+  <code>(lambda (arg1 arg2 . kvs) ...​)</code>. This argument takes
+  a property list of keywords and their values. Once again the
+  keywords can be represented by standard Scheme symbols.</p>
   <p>Another approach would be to pass the keywords first:
   <code>(lambda (kvs arg1 arg2) ...​)</code>. This is not ideal
   since it’s really nice to be able to call a keyword procedure
   just like an ordinary procedure when you don’t supply any keyword
   arguments (i.e. they get default values). Using a rest argument
   preserves this property; using one or more preceding arguments
-  does not. Using the rest argument for keywords implies that users
-  cannot have their own rest argument or optional positional
-  arguments. That's fine; the interplay of keywords with optional
-  and rest arguments is somewhat confusing to most people anyway.
-  And our keyword arguments are all optional, so a keyword argument
-  can be used for any purpose an optional or rest argument
-  might.</p>
+  does not.</p>
+  <p>Using the rest argument for keywords implies that users cannot
+  have their own rest argument or optional positional arguments.
+  That's fine; the interplay of keywords with optional and rest
+  arguments is somewhat confusing to most people anyway. And our
+  keyword arguments are all optional, so a keyword argument can be
+  used for any purpose an optional or rest argument might.</p>
   <p>The keyword arguments could be passed in a vector. We cannot
   do this because it’s not portable to use a vector as the rest
   argument to a procedure; it has to be a list.</p>
