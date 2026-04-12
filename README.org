@@ -1,3 +1,6 @@
+
+# SPDX-FileCopyrightText: 2026 Arthur A. Gleckler
+# SPDX-License-Identifier: MIT
 * SRFI 177: Portable keyword arguments
 
 ** by Lassi Kortela
@@ -9,14 +12,11 @@ keywords: [[https://srfi.schemers.org/?keywords=binding][Binding]]
 This repository hosts [[https://srfi.schemers.org/srfi-177/][SRFI 177]]: Portable keyword arguments, a [[https://srfi.schemers.org/][Scheme Request for Implementation]].
 
 This SRFI is in /withdrawn/ status.
-
-See also [[https://srfi.schemers.org/srfi-88/][SRFI 88: Keyword objects]] and [[https://srfi.schemers.org/srfi-89/][SRFI 89: Optional positional and named parameters]].
-
+See also [[/srfi-88/][SRFI 88: Keyword objects]] and [[/srfi-89/][SRFI 89: Optional positional and named parameters]].
 The full documentation for this SRFI can be found in the [[https://srfi.schemers.org/srfi-177/srfi-177.html][SRFI Document]].
 
 If you'd like to participate in the discussion of this SRFI, or report issues with it, please [[https://srfi.schemers.org/srfi-177/][join the SRFI-177 mailing list]] and send your message there.
 
 Thank you.
-
 
 [[mailto:srfi-editors@srfi.schemers.org][The SRFI Editors]]
